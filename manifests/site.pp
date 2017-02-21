@@ -43,6 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
+  include ::users
   notify { 'Updating /etc/motd': }
   exec { 'update motd':
     path => '/usr/local/bin',
