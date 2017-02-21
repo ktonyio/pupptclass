@@ -54,3 +54,10 @@ file { '/etc/motd':
   mode    => '0644',
   content => "I learned what a Namevar Default is!\n",
 }
+
+notify { 'Updating /etc/motd': }
+exec { 'update motd':
+  path => '/usr/local/bin',
+  command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+  creates => '/etc/motd',
+}
