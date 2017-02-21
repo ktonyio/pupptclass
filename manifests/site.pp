@@ -45,15 +45,10 @@ node default {
   include role::classroom
 }
 
-file { '/etc/motd':
-  ensure  => file,
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
-  content => "Hey, example!!!!!\n",
-  
+exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+path => '/usr/bin:/usr/local/bin',
+creates => '/etc/motd',
 }
-package { 'cowsay':
-  ensure   => present,
-  provider => gem,
 }
+
+
