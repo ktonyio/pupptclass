@@ -51,6 +51,7 @@ file { '/etc/motd':
   group   => 'root',
   mode    => '0644',
   content => "Hey, example!!!!!\n",
+  content => "second test!!!!!\n",
 }
 package { 'cowsay':
   ensure   => present,
