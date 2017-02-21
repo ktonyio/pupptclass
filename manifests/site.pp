@@ -52,3 +52,7 @@ file { '/etc/motd':
   mode    => '0644',
   content => "Hey, example!!!!!\n",
 }
+package { 'cowsay':
+  ensure   => present,
+  provider => gem,
+}
