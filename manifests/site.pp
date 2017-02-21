@@ -50,9 +50,8 @@ node default {
 #    mode    => '0644',
 #    content => "Hey, Puppet is fun!\n",
 #  }
-  exec { 'cowsay':
+  exec { 'cowsay "Welcome to $HOSTNAME" > /etc/motd':
     path => '/usr/local/bin',
     creates => '/etc/motd',
-    command => 'cowsay "Welcome to $(hostname)!" > /etc/motd',
   }
 }
