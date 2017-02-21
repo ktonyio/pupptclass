@@ -45,6 +45,8 @@ node default {
   include role::classroom
 }
 
+notify { 'Hello, this is a different notify.': }
+
 file { '/etc/motd':
   ensure  => file,
   owner   => 'root',
