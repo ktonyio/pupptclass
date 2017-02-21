@@ -1,6 +1,6 @@
 class users { 
 user { 'fundamentals':
 ensure => present,
-gid = > wheel,
-  }
+gid = > 'wheel',
+}
 }
