@@ -45,6 +45,7 @@ node default {
   include role::classroom
   include ::users
   include ::skeleton
+  include ::nginx
   notify { 'Updating /etc/motd': }
   exec { 'update motd':
     path => '/usr/local/bin',
