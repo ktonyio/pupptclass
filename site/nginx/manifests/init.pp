@@ -12,7 +12,7 @@ class nginx {
     ensure => file,
     owner => 'root',
     group => 'root',
-    mode => '0755'
+    mode => '0755',
     source => 'puppet:///modules/nginx/index.html'
   }
   file { '/etc/nginx/nginx.conf':
