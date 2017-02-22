@@ -1,9 +1,9 @@
 class nginx {
-case $::osfamily {
-'redhat','debian':{
+  case $::osfamily {
+    'redhat', 'debian': {
       $package = 'nginx'
-      $owner='root'
-      $group='root'
+      $owner = 'root'
+      $group = 'root'
       $docroot = '/var/www'
       $confdir = '/etc/nginx'
       $logdir = '/var/log/nginx'
@@ -18,50 +18,47 @@ case $::osfamily {
     }
     default : {
       fail("Unsupported OS! (${::osfamily})")
-}
     }
-    $user = $::osfamily ? {
+  }
+
+  $user = $::osfamily ? {
     'redhat'  => 'nginx',
     'debian'  => 'www-data',
     'windows' => 'nobody',
   }
 
-    
-File {
-owner => 'root',
-group => 'root',
-mode => '0664',
-}
-package { 'nginx':
-ensure => present,
-}
-file { [ '$docroot', "${confdir}/conf.d" ]:
-ensure => directory,
-}
-file { '$docroot/index.html':
-ensure => file,
-source => 'puppet:///modules/nginx/index.html',
-}
-file { "${configdir}/nginx.conf":
-ensure => file,
-content      => epp('nginx/nginx.conf.epp', {
+  File {
+    owner => 'root',
+    group => 'root',
+    mode => '0664',
+  }
+  package { 'nginx':
+    ensure => latest,
+  }
+  file { [$docroot, "${confdir}/conf.d"]:
+    ensure => directory,
+  }
+  file { "${docroot}/index.html":
+    ensure => file,
+    source => 'puppet:///modules/nginx/index.html',
+  }
+  file { "${confdir}/nginx.conf":
+    ensure       => file,
+    content      => epp('nginx/nginx.conf.epp', {
         user     => $user,
         logdir   => $logdir,
         confdir => $confdir,
-})
-package { 'nginx':
-ensure => present,
-
-}
-file {"${confdir}/default.conf":
-ensure => file,
-content     => epp('nginx/default.conf.epp', {docroot => $docroot}),
-notify => Service['nginx'],
-package { 'nginx':
-ensure => present,
-}
-service { 'nginx':
-ensure => running,
-enable => true,
-}
+      }),
+    require => Package['nginx'],
+  }
+  file { "${confdir}/conf.d/default.conf":
+    ensure      => file,
+    content     => epp('nginx/default.conf.epp', {docroot => $docroot}),
+    require => Package['nginx'],
+  }
+  service { 'nginx':
+    ensure => running,
+    enable => true,
+    subscribe => File["${confdir}/nginx.conf", "${confdir}/conf.d/default.conf"],
+  }
 }
