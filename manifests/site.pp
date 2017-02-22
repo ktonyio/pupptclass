@@ -43,9 +43,8 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  include ::users
+  # skeleton classification defined here in default node declaration, can also be done in the enterprise console.
   include ::skeleton
-  include ::nginx
   notify { 'Updating /etc/motd': }
   exec { 'update motd':
     path => '/usr/local/bin',
