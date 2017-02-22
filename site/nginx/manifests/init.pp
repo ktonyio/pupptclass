@@ -7,6 +7,7 @@ class nginx {
       $docroot = '/var/www'
       $confdir = '/etc/nginx'
       $logdir = '/var/log/nginx'
+      $piddir= '/var/run'
     }
     'windows': {
       $package = 'nginx-service'
@@ -35,7 +36,7 @@ class nginx {
   package { 'nginx':
     ensure => latest,
   }
-  file { [$docroot, "${confdir}/conf.d"]:
+  file { [$docroot, $pdidir, "${confdir}/conf.d"]:
     ensure => directory,
   }
   file { "${docroot}/index.html":
@@ -48,6 +49,7 @@ class nginx {
         user     => $user,
         logdir   => $logdir,
         confdir => $confdir,
+        piddir => $piddir,
       }),
     require => Package['nginx'],
   }
