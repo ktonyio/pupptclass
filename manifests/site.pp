@@ -54,5 +54,4 @@ node default {
     path => '/usr/local/bin',
     creates => '/etc/motd',
   }
-  class memcached,
 }
