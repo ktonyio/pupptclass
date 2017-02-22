@@ -33,7 +33,8 @@ class nginx {
     require => Package['nginx'],
     require => Service['nginx'],
   }
-  servce { 'nginx':
+  service { 'nginx':
     ensure => running,
     enable => true,
+  }
 }
