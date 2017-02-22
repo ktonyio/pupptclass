@@ -50,7 +50,7 @@ node default {
 
   include role::classroom
   include ::skeleton
-  include ::nginx
+  
   
 }
 
