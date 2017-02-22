@@ -1,4 +1,5 @@
 class nginx {
+case { 
 File {
 owner => 'root',
 group => 'root',
