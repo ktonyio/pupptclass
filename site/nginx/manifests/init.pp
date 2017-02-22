@@ -5,7 +5,7 @@ class nginx {
       $owner = 'root'
       $group = 'root'
       $docroot = '/var/www'
-      $confdir = '${docroot}'
+      $confdir = '/etc/nginx'
       $logdir = '/var/log/nginx'
     }
     'windows': {
@@ -42,7 +42,7 @@ class nginx {
     ensure => file,
     source => 'puppet:///modules/nginx/index.html',
   }
-  file { "${docroot}/nginx.conf":
+  file { "${confdir}/nginx.conf":
     ensure       => file,
     content      => epp('nginx/nginx.conf.epp', {
         user     => $user,
@@ -51,7 +51,7 @@ class nginx {
       }),
     require => Package['nginx'],
   }
-  file { "${docroot}/conf.d/default.conf":
+  file { "${confdir}/conf.d/default.conf":
     ensure      => file,
     content     => epp('nginx/default.conf.epp', {docroot => $docroot}),
     require => Package['nginx'],
@@ -59,6 +59,6 @@ class nginx {
   service { 'nginx':
     ensure => running,
     enable => true,
-    subscribe => File["${docroot}/nginx.conf", "${docroot}/conf.d/default.conf"],
+    subscribe => File["${confdir}/nginx.conf", "${confdir}/conf.d/default.conf"],
   }
 }
