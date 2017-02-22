@@ -36,7 +36,7 @@ class nginx {
   package { 'nginx':
     ensure => latest,
   }
-  file { [$docroot, $pdidir, "${confdir}/conf.d"]:
+  file { [$docroot, $piddir, "${confdir}/conf.d"]:
     ensure => directory,
   }
   file { "${docroot}/index.html":
