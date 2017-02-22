@@ -22,7 +22,7 @@ class nginx {
     mode => '0664',
     source => 'puppet:///modules/nginx/nginx.conf',
     require => Package['nginx'],
-    require => Service['nginx'],
+    notify => Service['nginx'],
   }
   file { '/etc/nginx/conf.d/default.conf':
     ensure => file,
@@ -31,7 +31,7 @@ class nginx {
     mode => '0664',
     source => 'puppet:///modules/nginx/default.conf',
     require => Package['nginx'],
-    require => Service['nginx'],
+    notify => Service['nginx'],
   }
   service { 'nginx':
     ensure => running,
