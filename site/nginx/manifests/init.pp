@@ -49,7 +49,8 @@ content      => epp('nginx/nginx.conf.epp', {
         logdir   => $logdir,
         confdir => $confdir,
 })
-require => Package['nginx'],
+package { 'nginx':
+ensure => present,
 
 }
 file {"${confdir}/default.conf":
