@@ -9,7 +9,10 @@ class nginx {
   mode => '0755'
   }
   file { '/var/www/index.html':
-    ensure => file
+    ensure => file,
+    owner => 'root',
+    group => 'root',
+    mode => '0755'
     source => 'puppet:///modules/nginx/index.html'
   }
   file { '/etc/nginx/nginx.conf':
