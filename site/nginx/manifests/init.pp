@@ -17,13 +17,19 @@ class nginx {
     owner => 'root',
     group => 'root',
     mode => '0644',
-    source => 'puppet:///modules/nginx/nginx.conf'
+    source => 'puppet:///modules/nginx/nginx.conf',
+    require => Package['nginx']
   }
-  file { '/etc/nginx/default.conf':
+  file { '/etc/nginx/conf.d/default.conf':
     ensure => file,
     owner => 'root',
     group => 'root',
     mode => '0644',
     source => 'puppet:///modules/nginx/default.conf'
+  }
+  service { 'nginx':
+    ensure => running,
+    enable => true,
+    subscribe => File['/etc/nginx/nginx.conf', '/etc/nginx/conf.d/default.conf']
   }
 }
