@@ -50,7 +50,7 @@ content      => epp('nginx/nginx.conf.epp', {
         confdir => $confdir,
 })
 require => Package['nginx'],
-notify => Service['nginx'],
+
 }
 file {"${confdir}/default.conf":
 ensure => file,
