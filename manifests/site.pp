@@ -42,15 +42,15 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
+  if $::virtual != 'physical' {
+    notify {"This is a ${::virtual} Machine!":}
+  
+  }
   include role::classroom
   include ::skeleton
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
     path => '/usr/local/bin',
     creates => '/etc/motd',
   }  
-  if $::virtual != 'physical' {
-    $vmname = capitalize($::virtual)
-    notify {"This is a ${vmname} Virtual Machine!":}
   
-  }
 }
