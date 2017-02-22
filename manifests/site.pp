@@ -47,5 +47,10 @@ node default {
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
     path => '/usr/local/bin',
     creates => '/etc/motd',
+  }  
+  if $::virtual != 'physical' {
+    $vmname = capitalize($::virtual)
+    notify {"This is a ${vmname} Virtual Machine!":}
+  
   }
 }
