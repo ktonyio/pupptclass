@@ -1,7 +1,7 @@
 class nginx {
 case $::osfamily {
 'redhat','debian':{
-      $package='nginx'
+      $package = 'nginx'
       $owner='root'
       $group='root'
       $docroot = '/var/www'
@@ -57,7 +57,8 @@ file {"${confdir}/default.conf":
 ensure => file,
 content     => epp('nginx/default.conf.epp', {docroot => $docroot}),
 notify => Service['nginx'],
-require => Package['nginx'],
+package { 'nginx':
+ensure => present,
 }
 service { 'nginx':
 ensure => running,
