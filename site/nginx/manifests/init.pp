@@ -31,7 +31,7 @@ class nginx {
     mode => '0664',
     source => 'puppet:///modules/nginx/default.conf',
     require => Package['nginx'],
-    // notifying the service from the file. simmilar to subscribe
+    # notifying the service from the file, simmilar to subscribe
     notify => Service['nginx'],
   }
   service { 'nginx':
