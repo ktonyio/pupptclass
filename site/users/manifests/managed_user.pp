@@ -4,7 +4,7 @@ define users::managed_user (
   user { $title:
     ensure => present,
   }
-  file { "/home/${title}"
+  file { "/home/${title}":
     ensure => directory,
     owner => $title,
     group => $group,
