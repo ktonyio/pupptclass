@@ -1,4 +1,4 @@
-class site::epel {
+class wrappers::epel {
   include epel
   
   
