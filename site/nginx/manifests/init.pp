@@ -1,4 +1,4 @@
-class nginx:params {
+class nginx::params {
   $docroot = '/var/www',
 }
 class nginx (
