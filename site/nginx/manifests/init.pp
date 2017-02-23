@@ -1,4 +1,6 @@
-class nginx {
+class nginx (
+  $root,
+) {
   # common practice to keep Resource Defaults near top of puppet file
   File {
     owner => 'root',
