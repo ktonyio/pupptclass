@@ -1,4 +1,7 @@
-class nginx {
+class nginx (
+  $docroot = '/var/www',
+)
+{
   package { 'nginx':
     ensure => latest,
   }
@@ -8,7 +11,7 @@ class nginx {
     group => 'root',
     mode => '0644',
   }
-  file { '/var/www':
+  file { "$docroot":
     ensure => directory,
     mode => '0755',
   }
