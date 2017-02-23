@@ -21,6 +21,6 @@ mod 'puppetlabs/apache', '1.11.0'
 
 mod 'puppetlabs/concat', '2.2.0'
 
-mod 'puppetlabs/staging', '2.2.0'
+mod 'puppet/staging', '2.2.0'
 
 mod 'hunner/wordpress', '1.0.0'
