@@ -1,2 +1,2 @@
 ---
-message: This came from a environment-specific Hiera datasource.
+message: This came from an environment-specific Hiera datasource.
