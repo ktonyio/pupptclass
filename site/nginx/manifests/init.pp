@@ -7,7 +7,7 @@ class nginx (
     group => 'root',
     mode => '0644',
   }
-  $docroot = pick($root, $default_docroom)
+  $docroot = pick($root, $default_docroot)
   package { 'nginx':
     ensure => present,
   }
