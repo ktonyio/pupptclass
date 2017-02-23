@@ -1,4 +1,5 @@
 class profile::base {
 #  notify { "Hello, my name is ${::hostname}": }
-  notify { "Hello, my name is hiera('hostname', 'not working')": }
+  $message = hiera('message', 'This is not from Hiera')
+  notify { $message: }
 }
