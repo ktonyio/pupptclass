@@ -22,3 +22,11 @@ mod 'arioch-redis', '1.2.4'
 
 # 
 mod 'thias-sysctl', '1.0.6'
+
+# stuff for captstone
+mod 'puppet-staging', '2.2.0'
+mod 'puppetlabs-mysql', '3.10.0'
+mod 'puppetlabs-concat', '2.2.0'
+mod 'puppetlabs-apache', '1.11.0'
+mod 'hunner-wordpress', '1.0.0'
+
