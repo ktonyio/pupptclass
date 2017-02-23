@@ -45,6 +45,10 @@ node default {
   include role::classroom
   # skeleton classification defined here in default node declaration, can also be done in the enterprise console.
   include ::skeleton
+  
+  # exercise 17.1
+  include ::root
+  
   # exercise 12.2
   # on console: facter virtual 
   # anything other than physical is virtual, in training lab case "docker"
