@@ -11,6 +11,12 @@ mod 'stahnma-epel', '1.2.2'
 # 
 mod 'puppetlabs-limits', '0.1.0'
 
+#
+mod 'puppetlabs-apt', '2.3.0'
+
+# 
+mod 'puppetlabs-stdlib', '4.15.0'
+
 # 
 mod 'arioch-redis', '1.2.4'
 
