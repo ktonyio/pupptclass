@@ -47,9 +47,6 @@ node default {
   }
   include role::classroom
   include ::skeleton
-  class {'nginx':
-    root => '/var/newdocroot',
-  }
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
     path => '/usr/local/bin',
     creates => '/etc/motd',
