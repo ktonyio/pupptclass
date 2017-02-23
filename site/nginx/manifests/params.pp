@@ -1,11 +1,10 @@
 class nginx::params {
-  
   case $::osfamily {
     'redhat', 'debian': {
       $package = 'nginx'
       $owner = 'root'
       $group = 'root'
-      $default_docroot = '/var/www'
+      $docroot = '/var/www'
       $confdir = '/etc/nginx'
       $logdir = '/var/log/nginx'
     }
@@ -13,7 +12,7 @@ class nginx::params {
       $package = 'nginx-service'
       $owner = 'Administrator'
       $group = 'Administrators'
-      $default_docroot = 'C:/ProgramData/nginx/html'
+      $docroot = 'C:/ProgramData/nginx/html'
       $confdir = 'C:/ProgramData/nginx'
       $logdir = 'C:/ProgramData/nginx/logs' 
     }
@@ -21,12 +20,10 @@ class nginx::params {
       fail("Unsupported OS! (${::osfamily})")
     }
   }
-
   $user = $::osfamily ? {
     'redhat'  => 'nginx',
     'debian'  => 'www-data',
     'windows' => 'nobody',
   }
-  
-  $docroot = pick($root, $default_docroot)
+  $port = '80'
 }
