@@ -7,8 +7,16 @@ class nginx (
     group => 'root',
     mode => '0644',
   }
+  $docroot = pick($root, $default_docroom)
   package { 'nginx':
     ensure => present,
+  }
+  file { $docroot:
+    ensure => directory,
+  }
+  file { '${docroot}/index.html':
+    ensure => file,
+    source => 'puppet:///modules/nginx/index.html',
   }
   file { '/var/www/':
     ensure => directory,
