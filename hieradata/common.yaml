@@ -1,4 +1,4 @@
 ---
 message: This message came from the common hiera datasource.
 
-docroot: /var/www/docroot-HIERA
+nginx::docroot: /var/www/docroot-HIERA
