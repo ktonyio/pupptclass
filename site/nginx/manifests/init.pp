@@ -5,6 +5,7 @@ class nginx (
   String $docroot = $nginx::params::docroot,
   String $confdir = $nginx::params::confdir,
   String $logdir = $nginx::params::logdir,
+  String $port = $nginx::params::port,
 ) inherits nginx::params {
   File {
     owner => 'root',
@@ -32,7 +33,7 @@ class nginx (
   }
   file { "${confdir}/conf.d/default.conf":
     ensure      => file,
-    content     => epp('nginx/default.conf.epp', {docroot => $docroot}),
+    content     => epp('nginx/default.conf.epp', { docroot => $docroot, port => $port }),
     require => Package['nginx'],
   }
   service { 'nginx':
