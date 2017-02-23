@@ -1,6 +1,6 @@
 class nginx (
   $docroot = $nginx::params::docroot,
-) inherits nginx:params {
+) inherits nginx::params {
   package { 'nginx':
     ensure => latest,
   }
