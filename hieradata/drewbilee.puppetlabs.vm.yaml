@@ -1,2 +1,2 @@
 ---
-message: This message came from a node-specific Hiera datasource.
+message2: This message came from a node-specific Hiera datasource.
