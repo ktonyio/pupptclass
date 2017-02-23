@@ -47,8 +47,9 @@ node default {
   include ::skeleton
   
   # exercise 17.1
-  include ::root
-  
+  class { 'nginx':
+    root => '/var/www/docroot'
+  }
   # exercise 12.2
   # on console: facter virtual 
   # anything other than physical is virtual, in training lab case "docker"
