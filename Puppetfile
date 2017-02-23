@@ -21,4 +21,4 @@ mod 'puppetlabs-stdlib', '4.15.0'
 mod 'arioch-redis', '1.2.4'
 
 # 
-mod 'herculesteam-augeasproviders_sysctl', '2.1.0'
+mod 'thias-sysctl', '1.0.6'
