@@ -1,4 +1,6 @@
-class profile::wordpress ( 
+class profile::wordpress (
+  # this file is wrapping all of our site-specific configuration into a profile
+  # class declaration is like including the class. it allows us to override some config here
   class { 'mysql::server':
     root_password => 'root'
   }
