@@ -1,6 +1,11 @@
 class nginx (
-  $root,
-) {
+  String $owner = nginx::params::owner,
+  String $group = nginx::params::group,
+  String $docroot = nginx::params::docroot,
+  String $log_dir = nginx::params::logroot,
+  String $port = nginx::params::port,
+) 
+inherits nginx::params {
   # common practice to keep Resource Defaults near top of puppet file
   File {
     owner => 'root',
