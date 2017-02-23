@@ -47,5 +47,3 @@ ensure => running,
 enable => true,
 }
 }
-Lab 17.2: Proposed Solution
-VirtualFundamentals
