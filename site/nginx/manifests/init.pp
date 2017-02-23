@@ -6,7 +6,7 @@ $docroot = $nginx::params::docroot,
 $confdir = $nginx::params::confdir,
 $logdir = $nginx::params::logdir,
 $user = $nginx::params::user,
-$port = $nginx::params::port
+
 ) inherits nginx::params {
 File {
 owner => $owner,
