@@ -58,10 +58,10 @@ node default {
     $type = $::virtual
     notify { "This is a ${type} virtual machine.": }
   }
-  notify { 'Updating /etc/motd': }
-  exec { 'update motd':
-    path => '/usr/local/bin',
-    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
-    creates => '/etc/motd',
-  }
+#  notify { 'Updating /etc/motd': }
+#  exec { 'update motd':
+#    path => '/usr/local/bin',
+#    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+#    creates => '/etc/motd',
+#  }
 }
