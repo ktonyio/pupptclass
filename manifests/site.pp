@@ -50,7 +50,7 @@ node default {
   # anything other than physical is virtual, in training lab case "docker"
   if $::virtual != 'physical' {
     $type = $::virtual
-    notify { "This is a {$type} virtual machine." }:}
+    notify { "This is a ${type} virtual machine." }:}
   }
   notify { 'Updating /etc/motd': }
   exec { 'update motd':
